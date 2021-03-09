@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => HomePage(),
         'mapPage': (BuildContext context) => MapPage()
       },
+      theme: ThemeData.dark(),
     );
   }
 }
