@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_reader/src/tabs/addresses_tab.dart';
+import 'package:qr_reader/src/tabs/maps_tab.dart';
 import 'package:qr_reader/src/widgets/custom_navigatorBar.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,6 +13,7 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         title: Text("Direcciones"),
       ),
+      body: _HomePageBody(),
       bottomNavigationBar: CustomNavigatorBar(),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
@@ -19,5 +22,23 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+}
+
+class _HomePageBody extends StatelessWidget {
+  const _HomePageBody({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final currentIndex = 0;
+
+    switch (currentIndex) {
+      case 0:
+        return MapsTab();
+      case 1:
+        return AddressesTab();
+      default:
+        return MapsTab();
+    }
   }
 }

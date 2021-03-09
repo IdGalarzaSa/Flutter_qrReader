@@ -6,8 +6,10 @@ class CustomNavigatorBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentIndexSelected = 0;
+
     return BottomNavigationBar(
-      currentIndex: 0,
+      currentIndex: currentIndexSelected,
       elevation: 0,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.map), label: "Map"),
