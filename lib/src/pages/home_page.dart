@@ -4,6 +4,7 @@ import 'package:qr_reader/src/providers/ui_provider.dart';
 import 'package:qr_reader/src/tabs/addresses_tab.dart';
 import 'package:qr_reader/src/tabs/maps_tab.dart';
 import 'package:qr_reader/src/widgets/custom_navigatorBar.dart';
+import 'package:qr_reader/src/widgets/qr_scan_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -17,11 +18,7 @@ class HomePage extends StatelessWidget {
       ),
       body: _HomePageBody(),
       bottomNavigationBar: CustomNavigatorBar(),
-      floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        onPressed: () {},
-        child: Icon(Icons.place),
-      ),
+      floatingActionButton: QRScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
