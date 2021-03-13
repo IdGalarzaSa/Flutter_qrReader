@@ -13,14 +13,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uiProvider = Provider.of<UIProvider>(context);
+    final scansProvider = Provider.of<ScanListProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text(uiProvider.selectedMenuOpt == 0 ? "Maps" : "Places"),
+        title: Text(scansProvider.selectedType == "http" ? "Places" : "Maps"),
         actions: [
-          IconButton(icon: Icon(Icons.delete_forever), onPressed: () {})
+          IconButton(
+              icon: Icon(Icons.delete_forever),
+              onPressed: () {
+                scansProvider.deleteScansByType(scansProvider.selectedType);
+              })
         ],
       ),
       body: _HomePageBody(),

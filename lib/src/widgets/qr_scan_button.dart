@@ -23,6 +23,7 @@ class QRScanButton extends StatelessWidget {
         //   ScanMode.QR, // Tipo de escaneo
         // );
         scanProvider.nuevoRegistro("geo: 15.16, 17.24");
+        scanProvider.nuevoRegistro("https://www.google.com.bo");
       },
     );
   }
