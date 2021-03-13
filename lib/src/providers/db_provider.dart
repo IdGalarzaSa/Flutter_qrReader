@@ -38,7 +38,7 @@ class DBProvider {
 
   Future<int> newScan(ScanModel newScan) async {
     final db = await getDatabase;
-    final res = await db.insert('Scan', newScan.toJson());
+    final res = await db.insert('Scans', newScan.toJson());
     return res;
   }
 
@@ -74,6 +74,12 @@ class DBProvider {
     final db = await getDatabase;
     final res =
         await db.delete('Scans', where: 'id = ?', whereArgs: [newScan.id]);
+    return res;
+  }
+
+  Future<int> deleteScanById(int id) async {
+    final db = await getDatabase;
+    final res = await db.delete('Scans', where: 'id = ?', whereArgs: [id]);
     return res;
   }
 
