@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qr_reader/src/providers/db_provider.dart';
 import 'package:qr_reader/src/providers/scan_list_providers.dart';
 import 'package:qr_reader/src/providers/ui_provider.dart';
-import 'package:qr_reader/src/tabs/addresses_tab.dart';
-import 'package:qr_reader/src/tabs/maps_tab.dart';
+import 'package:qr_reader/src/tabs/scan_list_tab.dart';
 import 'package:qr_reader/src/widgets/custom_navigatorBar.dart';
 import 'package:qr_reader/src/widgets/qr_scan_button.dart';
 
@@ -47,13 +45,13 @@ class _HomePageBody extends StatelessWidget {
     switch (currentIndex) {
       case 0:
         scansProvider.loadScansByType("geo");
-        return MapsTab();
+        return ScanListTab("geo");
       case 1:
         scansProvider.loadScansByType("http");
-        return AddressesTab();
+        return ScanListTab("http");
       default:
         scansProvider.loadScansByType("geo");
-        return MapsTab();
+        return ScanListTab("geo");
     }
   }
 }

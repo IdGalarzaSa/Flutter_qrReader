@@ -15,7 +15,8 @@ class AddressesTab extends StatelessWidget {
       itemCount: scans.length,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
-          leading: Icon(Icons.map, color: Theme.of(context).accentColor),
+          leading:
+              Icon(Icons.home_outlined, color: Theme.of(context).accentColor),
           title: Text(scans[index].valor),
           subtitle: Text(scans[index].id.toString()),
           trailing: Icon(Icons.keyboard_arrow_right_rounded,

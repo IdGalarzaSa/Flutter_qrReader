@@ -38,8 +38,9 @@ class ScanListProvider extends ChangeNotifier {
   }
 
   deleteScansById(int id) async {
+    scans.removeWhere((scan) => scan.id == id);
     await DBProvider.db.deleteScanById(id);
-    loadScansByType(selectedType);
+    loadScansByType(selectedType); // No es necesario
   }
 
   deleteScansByType(String type) async {

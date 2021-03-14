@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/src/providers/scan_list_providers.dart';
 
-class MapsTab extends StatelessWidget {
-  const MapsTab({Key key}) : super(key: key);
+class ScanListTab extends StatelessWidget {
+  final String _type;
+
+  ScanListTab(@required this._type) {}
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,10 @@ class MapsTab extends StatelessWidget {
                 .deleteScansById(scans[index].id);
           },
           child: ListTile(
-            leading: Icon(Icons.map, color: Theme.of(context).accentColor),
+            leading: Icon(
+              _type == "http" ? Icons.house_outlined : Icons.map_outlined,
+              color: Theme.of(context).accentColor,
+            ),
             title: Text(scans[index].valor),
             subtitle: Text(scans[index].id.toString()),
             trailing: Icon(Icons.keyboard_arrow_right_rounded,
