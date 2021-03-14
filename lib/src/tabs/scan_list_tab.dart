@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/src/providers/scan_list_providers.dart';
+import 'package:qr_reader/src/utils/utils.dart';
 
 class ScanListTab extends StatelessWidget {
   final String _type;
 
-  ScanListTab(@required this._type) {}
+  ScanListTab(this._type);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,15 @@ class ScanListTab extends StatelessWidget {
       itemCount: scans.length,
       itemBuilder: (BuildContext context, int index) {
         return Dismissible(
+          background: Container(
+            child: Center(
+              child: Text(
+                "Removing",
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+            ),
+            color: Theme.of(context).accentColor,
+          ),
           key: Key(scans[index].id.toString()),
           onDismissed: (DismissDirection direction) {
             Provider.of<ScanListProvider>(context, listen: false)
@@ -32,7 +42,7 @@ class ScanListTab extends StatelessWidget {
             trailing: Icon(Icons.keyboard_arrow_right_rounded,
                 color: Theme.of(context).accentColor),
             onTap: () {
-              print("${scans[index].valor} - ${scans[index].id}");
+              launchURL(context, scans[index]);
             },
           ),
         );
