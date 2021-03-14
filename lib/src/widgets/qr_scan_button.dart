@@ -17,22 +17,18 @@ class QRScanButton extends StatelessWidget {
         final scanProvider =
             Provider.of<ScanListProvider>(context, listen: false);
 
-        // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        //   "#3D8BEF", // Color hexadecimal, que es el color de la línea en la superposición del código de barras.
-        //   "Cancel", // Texto del botón cancelar en la pantalla
-        //   true, // Valor bool utilizado para mostrar u ocultar el icono de flash
-        //   ScanMode.QR, // Tipo de escaneo
-        // );
-
-        String barcodeScanRes = "";
+        String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          "#3D8BEF", // Color hexadecimal, que es el color de la línea en la superposición del código de barras.
+          "Cancel", // Texto del botón cancelar en la pantalla
+          true, // Valor bool utilizado para mostrar u ocultar el icono de flash
+          ScanMode.QR, // Tipo de escaneo
+        );
 
         if (barcodeScanRes == '-1') {
           return;
         }
 
-        final scan =
-            await scanProvider.nuevoRegistro("geo:-16.503293,-68.142209");
-        // final scan = await scanProvider.nuevoRegistro("https://flutter.dev/");
+        final scan = await scanProvider.nuevoRegistro(barcodeScanRes);
 
         launchURL(context, scan);
       },
